@@ -19,6 +19,12 @@ defmodule Mallery.Router do
     get "/", PageController, :index
   end
 
+  scope "/mailgun", Mallery do
+    pipe_through :api
+
+    post "/", MailgunController, :email
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Mallery do
   #   pipe_through :api

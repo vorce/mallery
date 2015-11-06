@@ -18,5 +18,5 @@ config :mallery, Mallery.Repo,
   username: "postgres",
   password: "postgres",
   database: "mallery_test",
-  hostname: "localhost",
+  hostname: "docker",
   pool: Ecto.Adapters.SQL.Sandbox
