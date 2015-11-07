@@ -19,7 +19,7 @@ defmodule Mallery.MailgunController do
       imgs ->
         imgs
         |> Enum.each(fn({_, %Plug.Upload{path: path, filename: name, content_type: type} = _v}) ->
-          worker.cast(:image_pool,
+          worker.call(:image_pool,
             {:process, [
               %Mallery.Work.Item{file: path,
                 id: "#{clean_id(id)}_#{name}", # TODO should probably sanitize name also

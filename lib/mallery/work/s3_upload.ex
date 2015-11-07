@@ -30,7 +30,6 @@ defmodule Mallery.Work.S3Upload do
         url = "https://s3-#{region}.amazonaws.com/#{bucket}/#{item.id}"
         next.cast(:url_pool,
             {:process, [%{item | url: url}]})
-        # TODO: delete item.file from disk
       false ->
         Logger.warn("File referred to by item does not exist! #{inspect(item)}")
     end
