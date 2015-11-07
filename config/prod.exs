@@ -27,6 +27,9 @@ config :mallery, Mallery.Repo,
   url: System.get_env("DATABASE_URL"),
   pool_size: 20
 
+config :mallery, :raw_dir, Path.expand("./to_process")
+config :mallery, :fetcher, Mallery.Work.Fetcher
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
