@@ -13,6 +13,9 @@ defmodule Mallery do
       worker(Mallery.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Mallery.Worker, [arg1, arg2, arg3]),
+
+      Honeydew.child_spec(:fetch_pool, Mallery.Work.Fetcher, Mallery.Work.Uploader, [workers: 10]),
+      Honeydew.child_spec(:upload_pool, Mallery.Work.Uploader, {}, [workers: 1]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

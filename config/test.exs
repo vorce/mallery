@@ -20,3 +20,6 @@ config :mallery, Mallery.Repo,
   database: "mallery_test",
   hostname: "docker",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :mallery, :raw_dir, Path.expand("./to_process")
+config :mallery, :fetcher, Mallery.Work.Fetcher

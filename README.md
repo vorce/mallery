@@ -1,5 +1,12 @@
 # Mallery
 
+1. Get image urls
+2. Download images to disk
+3. Serve images to 3rd party
+4. Retrieve processed images and persist to db
+
+---
+
 To start your Phoenix app:
 
   1. Install dependencies with `mix deps.get`

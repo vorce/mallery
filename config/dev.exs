@@ -40,3 +40,6 @@ config :mallery, Mallery.Repo,
   database: "mallery_dev",
   hostname: "docker",
   pool_size: 10
+
+config :mallery, :raw_dir, Path.expand("./to_process")
+config :mallery, :fetcher, Mallery.Work.Fetcher
