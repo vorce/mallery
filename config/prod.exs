@@ -30,9 +30,10 @@ config :mallery, Mallery.Repo,
 #config :mallery, :raw_dir, Path.expand("./to_process")
 config :mallery, :uploader, Mallery.Work.S3Upload
 config :mallery, :s3client, Mallery.S3Client
+config :mallery, :s3bucket, "malleryimages"
 
 config :mallery, :ex_aws,
-  s3: [], # S3 config goes here
+  s3: [region: "eu-west-1"], # S3 config goes here
 
 # ## SSL Support
 #

@@ -7,6 +7,8 @@ defmodule Mallery do
     import Supervisor.Spec, warn: false
 
     s3client = Application.get_env(:mallery, :s3client)
+    s3bucket = Application.get_env(:mallery, :s3bucket)
+
     children = [
       # Start the endpoint when the application starts
       supervisor(Mallery.Endpoint, []),
@@ -15,7 +17,7 @@ defmodule Mallery do
       # Here you could define other workers and supervisors as children
       # worker(Mallery.Worker, [arg1, arg2, arg3]),
 
-      Honeydew.child_spec(:upload_pool, Mallery.Work.S3Upload, {s3client, Mallery.Work.PostgresPersist}, [workers: 10]),
+      Honeydew.child_spec(:upload_pool, Mallery.Work.S3Upload, {s3client, s3bucket, Mallery.Work.PostgresPersist}, [workers: 10]),
       Honeydew.child_spec(:persist_pool, Mallery.Work.PostgresPersist, {}, [workers: 2]),
     ]
 

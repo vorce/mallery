@@ -22,7 +22,7 @@ defmodule Mallery.MailgunController do
           worker.cast(:upload_pool,
             {:process, [
               %Mallery.Work.Item{file: path,
-                id: "#{id}_#{name}",
+                id: "#{clean_id(id)}_#{name}",
                 name: name,
                 sender: sender,
                 content_type: type}]}) end)
@@ -46,5 +46,11 @@ defmodule Mallery.MailgunController do
   defp image_type?(content_type) do
     @image_content_types
     |> Enum.member?(String.downcase(content_type))
+  end
+
+  defp clean_id(id) do
+    id
+    |> String.replace("<", "")
+    |> String.replace(">", "")
   end
 end
