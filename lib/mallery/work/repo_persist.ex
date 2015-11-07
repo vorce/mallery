@@ -1,4 +1,4 @@
-defmodule Mallery.Work.PostgresPersist do
+defmodule Mallery.Work.RepoPersist do
   @behaviour Mallery.Work
 
   use Honeydew
@@ -9,7 +9,7 @@ defmodule Mallery.Work.PostgresPersist do
   end
 
   def persist(%Mallery.Work.Item{} = item, prefix) do
-    Logger.info("Starting to persist: #{item.name} to postgres")
+    Logger.info("Starting to persist: #{item.name} to repo")
 
     params = %{sender: item.sender,
       url_prefix: prefix, img_url: item.url}

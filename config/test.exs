@@ -21,7 +21,5 @@ config :mallery, Mallery.Repo,
   hostname: "docker",
   pool: Ecto.Adapters.SQL.Sandbox
 
-#config :mallery, :raw_dir, Path.expand("./to_process")
-config :mallery, :uploader, Mallery.Work.S3Upload
-config :mallery, :s3client, Mallery.TestS3Client
-config :mallery, :s3bucket, "malleryimages"
+config :mallery, :image_worker, Mallery.Work.Dummy
+config :mallery, :url_worker, Mallery.Work.Dummy

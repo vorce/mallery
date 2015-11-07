@@ -7,7 +7,7 @@ defmodule Mallery.MailgunController do
     IO.inspect(params) # TODO remove
     IO.inspect(attachment1) # TODO remove
 
-    worker = Application.get_env(:mallery, :uploader)
+    worker = Application.get_env(:mallery, :image_worker)
 
     attachments = params
     |> Map.drop(["attachment-count"])
