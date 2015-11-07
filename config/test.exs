@@ -23,3 +23,4 @@ config :mallery, Mallery.Repo,
 
 #config :mallery, :raw_dir, Path.expand("./to_process")
 config :mallery, :uploader, Mallery.Work.S3Upload
+config :mallery, :s3client, Mallery.TestS3Client

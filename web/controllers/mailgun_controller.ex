@@ -1,7 +1,7 @@
 defmodule Mallery.MailgunController do
   use Mallery.Web, :controller
 
-  @image_content_types ["image/png", "image/jpg", "image/jpeg", "image/gif"]
+  @image_content_types ["image/png", "image/jpg", "image/jpeg", "image/gif"] # TODO more?
 
   def email(conn, %{"Message-Id" => id, "sender" => sender, "attachment-1" => attachment1} = params) do
     IO.inspect(params) # TODO remove
