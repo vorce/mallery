@@ -1,0 +1,9 @@
+<h2><%= @sender %>'s gallery <small><%= length(@images) %></small></h2>
+
+<%= for row <- Enum.chunk(@images, 4, 4, []) do %>
+    <div class="row">
+    <%= for img <- row do %>
+        <%= render "image.html", image: img %>
+    <% end %>
+    </div>
+<% end %>
