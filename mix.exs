@@ -18,7 +18,7 @@ defmodule Mallery.Mixfile do
   def application do
     [mod: {Mallery, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex, :httpoison]]
+                    :phoenix_ecto, :postgrex, :ex_aws, :httpoison]]
   end
 
   # Specifies which paths to compile per environment
@@ -36,6 +36,9 @@ defmodule Mallery.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:honeydew, " ~> 0.0.8"},
-     {:httpoison, "~> 0.7.2"}]
+     {:httpoison, "~> 0.7.2"},
+     {:ex_aws, "~> 0.4.10"},
+     {:sweet_xml, "~> 0.2.1"}
+   ]
   end
 end
