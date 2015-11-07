@@ -3,6 +3,8 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Description</th>
       <th>Sender</th>
       <th>Img url</th>
       <th>Url prefix</th>
@@ -13,6 +15,8 @@
   <tbody>
 <%= for image <- @images do %>
     <tr>
+      <td><%= image.name %></td>
+      <td><%= image.description %></td>
       <td><%= image.sender %></td>
       <td><%= image.img_url %></td>
       <td><%= image.url_prefix %></td>

@@ -3,6 +3,16 @@
 <ul>
 
   <li>
+    <strong>Name:</strong>
+    <%= @image.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @image.description %>
+  </li>
+
+  <li>
     <strong>Sender:</strong>
     <%= @image.sender %>
   </li>

@@ -3,7 +3,7 @@ defmodule Mallery.MailgunController do
 
   @image_content_types ["image/png", "image/jpg", "image/jpeg", "image/gif"] # TODO more?
 
-  def email(conn, %{"Message-Id" => id, "sender" => sender, "attachment-1" => attachment1} = params) do
+  def email(conn, %{"Message-Id" => id, "sender" => sender, "attachment-1" => attachment1, "subject" => subject} = params) do
     IO.inspect(params) # TODO remove
     IO.inspect(attachment1) # TODO remove
 
@@ -25,7 +25,8 @@ defmodule Mallery.MailgunController do
                 id: "#{clean_id(id)}_#{name}", # TODO should probably sanitize name also
                 name: name,
                 sender: sender,
-                content_type: type}]}) end)
+                content_type: type,
+                description: subject}]}) end)
 
         send_resp(conn, 200, "Received #{length(imgs)} images")
     end

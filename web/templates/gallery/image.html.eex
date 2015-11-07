@@ -1,8 +1,10 @@
 <div class="col-md-3">
     <div class="thumbnail">
-        <img src="<%= @image.url_prefix <> @image.img_url %>" alt="<%= @image.img_url %>">
+        <img src="<%= @image.url_prefix <> @image.img_url %>" alt="<%= @image.name %>">
         <div class="caption">
-            <p><a href="<%= @image.img_url %>"><%= @image.img_url %></a></p>
+            <h4><a href="<%= @image.img_url %>"><%= @image.name %></a></h4>
+
+            <p><%= @image.description %></p>
         </div>
     </div>
 </div>

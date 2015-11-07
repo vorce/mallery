@@ -12,7 +12,8 @@ defmodule Mallery.Work.RepoPersist do
     Logger.info("Starting to persist: #{item.name} to repo")
 
     params = %{sender: item.sender,
-      url_prefix: prefix, img_url: item.url}
+      url_prefix: prefix, img_url: item.url,
+      name: item.name, description: item.description}
  
     changeset = Mallery.Image.changeset(%Mallery.Image{}, params)
     {:ok, _m} = Mallery.Repo.insert(changeset)
