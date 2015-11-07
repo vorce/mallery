@@ -10,25 +10,6 @@ defmodule Mallery.MailgunController do
     fetcher = Application.get_env(:mallery, :fetcher)
     raw_dir = Application.get_env(:mallery, :raw_dir)
     send_resp(conn, 200, "Received #{0} images")
-
-    _ =
-    """case images(attachments) do
-      [] ->
-        send_resp(conn, 406, "No image attachments found")
-      imgs ->
-        imgs
-        |> Enum.each(fn(img) ->
-          fetcher.cast(:fetch_pool,
-            {:fetch, [
-              %Mallery.Work.Item{url: img["url"],
-                dir: raw_dir,
-                name: "#{id}_#{Map.get(img, "name")}",
-                sender: sender,
-                content_type: img["content_type"]}]}) end)
-
-        send_resp(conn, 200, "Received #{length(imgs)} images")
-        """
-    end
   end
 
   def email(conn, _params) do
