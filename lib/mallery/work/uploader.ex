@@ -6,8 +6,8 @@ defmodule Mallery.Work.Uploader do
     {:ok, state}
   end
 
-  def upload(name, state) do
-    Logger.info("Starting to upload: #{name} to ...")
+  def upload(%Mallery.Work.Item{} = item, state) do
+    Logger.info("Starting to upload: #{item.name} to ...")
     :ok
   end
 end

@@ -14,8 +14,13 @@ defmodule Mallery.MailgunController do
         imgs
         |> Enum.each(fn(img) ->
           fetcher.cast(:fetch_pool,
-            {:fetch, [%{url: img["url"], dir: raw_dir, name: "#{id}_#{Map.get(img, "name")}"}]}) end)
-  
+            {:fetch, [
+              %Mallery.Work.Item{url: img["url"],
+                dir: raw_dir,
+                name: "#{id}_#{Map.get(img, "name")}",
+                sender: sender,
+                content_type: img["content_type"]}]}) end)
+
         send_resp(conn, 200, "Received #{length(imgs)} images")
     end
   end

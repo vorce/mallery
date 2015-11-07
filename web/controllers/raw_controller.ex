@@ -13,9 +13,17 @@ defmodule Mallery.RawController do
       true ->
         image_data = File.read!(target_file)
         conn
+        |> put_resp_header("content-type", content_type(target_file))
         |> resp(200, image_data)
       false ->
         send_resp(conn, 404, "")
     end
+  end
+
+  defp content_type(file) do
+    file
+    |> Path.extname()
+    |> String.replace(".", "")
+    |> Plug.MIME.type
   end
 end
