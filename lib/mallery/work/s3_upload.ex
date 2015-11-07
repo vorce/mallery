@@ -15,12 +15,24 @@ defmodule Mallery.Work.S3Upload do
       true ->
         Logger.info("Work item file exists, trying to upload...")
         image_data = File.read!(item.file)
-        result = client.put_object(bucket, item.name, image_data,
-          [{:content_type, item.content_type}, {:acl, :public_read}])
+
+        # TODO: Expire date?
+        result = client.put_object(bucket, item.id, image_data,
+          [{:content_type, item.content_type}, {:acl, :public_read},
+          {:meta, [{"Content-Type", item.content_type}]}])
+
         Logger.info("Done uploading to s3. Result: #{inspect(result)}")
-        # TODO: delete item.file
-      fase ->
-        Logger.warn("Work item file does not exist! #{inspect(item)}")
+
+        region = client.config_root() # TODO callbacks for s3 client?
+        |> Keyword.get(:s3)
+        |> Keyword.get(:region)
+
+        url = "https://s3-#{region}.amazonaws.com/#{bucket}/#{item.name}"
+        next.cast(:url_pool,
+            {:process, [%{item | url: url}]})
+        # TODO: delete item.file from disk
+      false ->
+        Logger.warn("File referred to by item does not exist! #{inspect(item)}")
     end
     :ok
   end

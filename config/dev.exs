@@ -41,10 +41,10 @@ config :mallery, Mallery.Repo,
   hostname: "docker",
   pool_size: 10
 
-#config :mallery, :raw_dir, Path.expand("./to_process")
 config :mallery, :uploader, Mallery.Work.S3Upload
 config :mallery, :s3client, Mallery.S3Client
 config :mallery, :s3bucket, "malleryimages"
+config :mallery, :url_prefix, "http://#{System.get_env("CLOUD_IO_TOKEN")}.cloudimg.io/s/resizeinbox/400x300/"
 
 config :mallery, :ex_aws,
-  s3: [region: "eu-west-1"] # S3 config goes here
+  s3: [region: "eu-west-1"]

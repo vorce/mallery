@@ -4,18 +4,20 @@ defmodule Mallery.Work.PostgresPersist do
   use Honeydew
   require Logger
 
-  def init(state) do
-    {:ok, state}
+  def init(prefix) do
+    {:ok, prefix}
   end
 
-  def persist(%Mallery.Work.Item{} = item, state) do
+  def persist(%Mallery.Work.Item{} = item, prefix) do
     Logger.info("Starting to persist: #{item.name} to postgres")
-    _ = """
-    params = %{}
+
+    params = %{sender: item.sender,
+      url_prefix: prefix, img_url: item.url}
  
     changeset = Mallery.Image.changeset(%Mallery.Image{}, params)
-    {:ok, m} = Mallery.Repo.insert(changeset)
-    """
+    {:ok, _m} = Mallery.Repo.insert(changeset)
+
+    Logger.info("Saved #{inspect(params)}")
     :ok
   end
 

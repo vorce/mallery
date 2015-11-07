@@ -1,0 +1,23 @@
+<h2>Show image</h2>
+
+<ul>
+
+  <li>
+    <strong>Sender:</strong>
+    <%= @image.sender %>
+  </li>
+
+  <li>
+    <strong>Img url:</strong>
+    <%= @image.img_url %>
+  </li>
+
+  <li>
+    <strong>Url prefix:</strong>
+    <%= @image.url_prefix %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: image_path(@conn, :edit, @image) %>
+<%= link "Back", to: image_path(@conn, :index) %>

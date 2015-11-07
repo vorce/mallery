@@ -1,0 +1,30 @@
+<h2>Listing images</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sender</th>
+      <th>Img url</th>
+      <th>Url prefix</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for image <- @images do %>
+    <tr>
+      <td><%= image.sender %></td>
+      <td><%= image.img_url %></td>
+      <td><%= image.url_prefix %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: image_path(@conn, :show, image), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: image_path(@conn, :edit, image), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: image_path(@conn, :delete, image), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New image", to: image_path(@conn, :new) %>
