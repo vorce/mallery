@@ -18,15 +18,18 @@ defmodule Mallery.MailgunController do
         send_resp(conn, 406, "No image attachments found")
       imgs ->
         imgs
-        |> Enum.each(fn({_, %Plug.Upload{path: path, filename: name, content_type: type} = _v}) ->
-          worker.call(:image_pool,
-            {:process, [
-              %Mallery.Work.Item{file: path,
-                id: "#{clean_id(id)}_#{name}", # TODO should probably sanitize name also
-                name: name,
-                sender: sender,
-                content_type: type,
-                description: subject}]}) end)
+        |> Enum.map(fn({_, %Plug.Upload{path: path, filename: name, content_type: type} = _v}) ->
+          Task.async(fn ->
+            worker.call(:image_pool, {:process, [%Mallery.Work.Item{
+              file: path,
+              id: "#{clean_id(id)}_#{name}", # TODO should probably sanitize name also
+              name: name,
+              sender: sender,
+              content_type: type,
+              description: subject}]})
+          end)
+        end)
+        |> Enum.map(&Task.await/1)
 
         send_resp(conn, 200, "Received #{length(imgs)} images")
     end
