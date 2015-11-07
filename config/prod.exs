@@ -27,8 +27,8 @@ config :mallery, Mallery.Repo,
   url: System.get_env("DATABASE_URL"),
   pool_size: 20
 
-config :mallery, :raw_dir, Path.expand("./to_process")
-config :mallery, :fetcher, Mallery.Work.ImageFetch
+#config :mallery, :raw_dir, Path.expand("./to_process")
+config :mallery, :uploader, Mallery.Work.S3Upload
 
 # ## SSL Support
 #

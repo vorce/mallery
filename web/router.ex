@@ -17,7 +17,6 @@ defmodule Mallery.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/raw/:id", RawController, :show
   end
 
   scope "/mailgun", Mallery do

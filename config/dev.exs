@@ -41,5 +41,5 @@ config :mallery, Mallery.Repo,
   hostname: "docker",
   pool_size: 10
 
-config :mallery, :raw_dir, Path.expand("./to_process")
-config :mallery, :fetcher, Mallery.Work.ImageFetch
+#config :mallery, :raw_dir, Path.expand("./to_process")
+config :mallery, :uploader, Mallery.Work.S3Upload

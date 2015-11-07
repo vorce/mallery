@@ -1,3 +1,3 @@
 defmodule Mallery.Work.Item do
-  defstruct url: "", dir: "", name: "", sender: "", content_type: ""
+  defstruct id: "", file: "", url: "", name: "", sender: "", content_type: ""
 end
