@@ -3,7 +3,7 @@ defmodule Mallery.MailgunController do
 
   @image_content_types ["image/png", "image/jpg", "image/jpeg", "image/gif"]
 
-  def email(conn, %{"Message-Id" => id, "sender" => sender, "attachment-0" => attachment0} = params) do
+  def email(conn, %{"sender" => sender, "attachment-0" => attachment0} = params) do
     IO.inspect(params)
     IO.inspect(attachment0)
 
@@ -12,7 +12,9 @@ defmodule Mallery.MailgunController do
     send_resp(conn, 200, "Received #{0} images")
   end
 
-  def email(conn, _params) do
+  def email(conn, params) do
+    IO.inspect(params)
+
     conn
     |> send_resp(406, "No attachments found")
   end
