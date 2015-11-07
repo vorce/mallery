@@ -42,4 +42,4 @@ config :mallery, Mallery.Repo,
   pool_size: 10
 
 config :mallery, :raw_dir, Path.expand("./to_process")
-config :mallery, :fetcher, Mallery.Work.Fetcher
+config :mallery, :fetcher, Mallery.Work.ImageFetch

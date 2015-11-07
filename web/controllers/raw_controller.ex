@@ -3,7 +3,9 @@ defmodule Mallery.RawController do
 
   require Logger
 
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"id" => id} = params) do
+    Logger.info("Raw image get request: #{inspect(params)}")
+
     raw_dir = Application.get_env(:mallery, :raw_dir)
     
     target_file = "#{raw_dir}/#{id}"

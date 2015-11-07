@@ -1,4 +1,6 @@
-defmodule Mallery.Work.Fetcher do
+defmodule Mallery.Work.ImageFetch do
+  @behaviour Mallery.Work
+
   use Honeydew
   require Logger
 
@@ -6,7 +8,7 @@ defmodule Mallery.Work.Fetcher do
     {:ok, state}
   end
 
-  def fetch(%Mallery.Work.Item{} = item, uploader) do
+  def fetch(%Mallery.Work.Item{} = item, worker) do
     target_file = "#{item.dir}/#{item.name}"
     Logger.info("Fetching #{inspect(%{url: item.url, to: target_file})}")
 
@@ -16,6 +18,10 @@ defmodule Mallery.Work.Fetcher do
     File.write!(target_file, data)
 
     Logger.info("Done with fetching #{target_file}")
-    uploader.cast(:upload_pool, {:upload, [item]})
+    worker.cast(:persist_pool, {:process, [item]})
+  end
+
+  def process(%Mallery.Work.Item{} = item, worker) do
+    fetch(item, worker)
   end
 end
