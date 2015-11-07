@@ -33,7 +33,7 @@ config :mallery, :s3client, Mallery.S3Client
 config :mallery, :s3bucket, "malleryimages"
 
 config :mallery, :ex_aws,
-  s3: [region: "eu-west-1"], # S3 config goes here
+  s3: [region: "eu-west-1"]
 
 # ## SSL Support
 #
