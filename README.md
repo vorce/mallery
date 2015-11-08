@@ -36,9 +36,9 @@ All images will go to the same bucket at the moment.
 After successful uploads, each url for the images are then saved to db.
 cloudimage.io is used to resize the images into suitable thumbnails when a gallery is requested.
 
-*Everything that is persited can be viewed (and edited) on the /images endpoint*. Disable it for production.
-
 ## Endpoints
+
+*Everything that is persited can be viewed (and edited) on the `/images` html endpoint*. Disable it for production.
 
 - Global html gallery that shows all images: `/gallery/`
 - To view a user's html gallery go to `/gallery/<user>`, where user = email address.
@@ -50,17 +50,17 @@ cloudimage.io is used to resize the images into suitable thumbnails when a galle
 
 Starting an "incoming image attachment" job from iex:
 
-  Mallery.Work.S3Upload.call(:image_pool, {:process, [%Mallery.Work.Item{file: "/path/to/my/file.png", id: "somerandomid", name: "file.png", content_type: "image/png", description: "Hello"}]})
+    Mallery.Work.S3Upload.call(:image_pool, {:process, [%Mallery.Work.Item{file: "/path/to/my/file.png", id: "somerandomid", name: "file.png", content_type: "image/png", description: "Hello"}]})
 
 Sending an email with attachment via mailgun:
 
-  curl -s --user 'my:apikey' \
-    https://api.mailgun.net/v3/mysandbox.mailgun.org/messages \
-    -F from='Foo <foo@mysandbox.mailgun.org>' \
-    -F to='alice@mysandbox.mailgun.org' \
-    -F subject='Hello' \
-    -F text='Text' \
-    -F attachment=@/path/to/my/file.png
+    curl -s --user 'my:apikey' \
+      https://api.mailgun.net/v3/mysandbox.mailgun.org/messages \
+      -F from='Foo <foo@mysandbox.mailgun.org>' \
+      -F to='alice@mysandbox.mailgun.org' \
+      -F subject='Hello' \
+      -F text='Text' \
+      -F attachment=@/path/to/my/file.png
 
 ## TODO
 
