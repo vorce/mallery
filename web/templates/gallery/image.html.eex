@@ -6,7 +6,7 @@
 
             <blockquote>
             <p><%= @image.description %></p>
-            <footer><%= @image.sender %></footer>
+            <footer><a href="mailto:<%= @image.sender %>"><%= @image.sender |> String.split_at(35) |> elem(0) %></a></footer>
             </blockquote>
         </div>
     </div>
