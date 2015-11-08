@@ -35,4 +35,9 @@ defmodule Mallery.GalleryApiControllerTest do
     assert length(json_response(conn, 200)["gallery"]) == 1
     assert json_response(conn, 200)["gallery"] |> hd |> Map.get("url") == prefix <> url
   end
+
+  test "GET images from unknown user gallery gives 404" do
+    conn = get(conn, "/api/gallery/foo")
+    assert response(conn, 404)
+  end
 end

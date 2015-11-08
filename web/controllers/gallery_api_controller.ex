@@ -20,6 +20,9 @@ defmodule Mallery.GalleryApiController do
     images = query
     |> Repo.all
 
-    render(conn, "index.json", images: images)
+    case images do
+      [] -> send_resp(conn, 404, "")
+      _ -> render(conn, "index.json", images: images)
+    end
   end
 end

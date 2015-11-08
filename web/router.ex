@@ -35,5 +35,10 @@ defmodule Mallery.Router do
 
     get "/gallery", GalleryApiController, :index
     get "/gallery/:sender", GalleryApiController, :show
+
+    get "/image/:id", ImageApiController, :show
+    delete "/image/:id", ImageApiController, :delete
+    patch "/image/:id", ImageApiController, :update
+    put "/image/:id", ImageApiController, :update
   end
 end
