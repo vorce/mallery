@@ -38,7 +38,8 @@ cloudimage.io is used to resize the images into suitable thumbnails when a galle
 
 *Everything that is persited can be viewed (and edited) on the /images endpoint*. Disable it for production.
 
-To view a gallery go to `/gallery/<user>`, where user would be the email address that sent the mail.
+Global gallery that shows all images: `/gallery/`
+To view a user gallery go to `/gallery/<user>`, where user = email address.
 
 ## Examples
 

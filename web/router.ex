@@ -17,7 +17,9 @@ defmodule Mallery.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/gallery/:sender", GalleryController, :index
+
+    get "/gallery/", GalleryController, :index
+    get "/gallery/:sender", GalleryController, :show
 
     resources "/images", ImageController
   end
