@@ -64,6 +64,7 @@ Sending an email with attachment via mailgun:
 
 ## TODO
 
+- Issue get requests for cloudimage.io urls right away
 - Use channels to notify on new images and show them right away
 
 ---
