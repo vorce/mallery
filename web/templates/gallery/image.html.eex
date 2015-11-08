@@ -4,7 +4,10 @@
         <div class="caption">
             <h4><a href="<%= @image.img_url %>"><%= @image.name %></a></h4>
 
+            <blockquote>
             <p><%= @image.description %></p>
+            <footer><%= @image.sender %></footer>
+            </blockquote>
         </div>
     </div>
 </div>
