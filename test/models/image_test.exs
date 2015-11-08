@@ -11,6 +11,11 @@ defmodule Mallery.ImageTest do
     assert changeset.valid?
   end
 
+  test "changeset with valid attributes and optional ones" do
+    changeset = Image.changeset(%Image{}, Map.merge(@valid_attrs, %{name: "foo", description: "bar"}))
+    assert changeset.valid?
+  end
+
   test "changeset with invalid attributes" do
     changeset = Image.changeset(%Image{}, @invalid_attrs)
     refute changeset.valid?

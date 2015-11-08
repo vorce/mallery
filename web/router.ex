@@ -30,8 +30,10 @@ defmodule Mallery.Router do
     post "/", MailgunController, :email
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Mallery do
-  #   pipe_through :api
-  # end
+  scope "/api", Mallery do
+    pipe_through :api
+
+    get "/gallery", GalleryApiController, :index
+    get "/gallery/:sender", GalleryApiController, :show
+  end
 end

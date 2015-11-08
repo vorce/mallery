@@ -28,7 +28,7 @@ defmodule Mallery.MailgunControllerTest do
   end
 
   test "POST with no attachments to /mailgun/" do
-    conn = post(conn, "/mailgun", %{"foo" => "bar"})
+    conn = post(conn(), "/mailgun", %{"foo" => "bar"})
     assert response(conn, 406)
   end
 
@@ -51,7 +51,7 @@ defmodule Mallery.MailgunControllerTest do
       "stripped-text" => "Mail w attachments", "subject" => "Attachment test 14",
       "timestamp" => "1446911726",
       "token" => "8f89d80d616a7516768183be87dba1312b460ef28ac4434b12"}
-    conn = post(conn, "/mailgun", incoming)
+    conn = post(conn(), "/mailgun", incoming)
     assert response(conn, 406)
   end
 end
