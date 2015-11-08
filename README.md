@@ -38,10 +38,15 @@ cloudimage.io is used to resize the images into suitable thumbnails when a galle
 
 *Everything that is persited can be viewed (and edited) on the /images endpoint*. Disable it for production.
 
-Global gallery that shows all images: `/gallery/`
-To view a user gallery go to `/gallery/<user>`, where user = email address.
+## Endpoints
 
-## Examples
+- Global html gallery that shows all images: `/gallery/`
+- To view a user's html gallery go to `/gallery/<user>`, where user = email address.
+- JSON API:
+  - GET: `/api/gallery`, `/api/gallery/<user>`
+  - GET/DELTE/PUT: `/api/image/<id>`
+
+## Handy test examples
 
 Starting an "incoming image attachment" job from iex:
 
