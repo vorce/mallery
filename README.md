@@ -64,8 +64,7 @@ Sending an email with attachment via mailgun:
 
 ## TODO
 
-- Json endpoing to galleries
-- Use channels to notify on new images and show them
+- Use channels to notify on new images and show them right away
 
 ---
 
