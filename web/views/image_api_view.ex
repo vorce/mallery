@@ -1,7 +1,11 @@
 defmodule Mallery.ImageApiView do
   use Mallery.Web, :view
 
-  def render("image.json", %{image: image}) do
+  def render("show.json", %{image: image}) do
+    %{image: render_one(image, Mallery.ImageApiView, "image.json")}
+  end
+
+  def render("image.json", %{image_api: image}) do
     %{id: image.id,
       sender: image.sender,
       img_url: image.img_url,

@@ -12,7 +12,7 @@ defmodule Mallery.ImageApiControllerTest do
   test "GET image by id" do
     image = Repo.insert!(%Mallery.Image{})
     conn = get(conn, "/api/image/#{image.id}")
-    assert json_response(conn, 200) == %{"id" => image.id,
+    assert json_response(conn, 200)["image"] == %{"id" => image.id,
       "sender" => image.sender,
       "img_url" => image.img_url,
       "url_prefix" => image.url_prefix,
@@ -37,7 +37,7 @@ defmodule Mallery.ImageApiControllerTest do
   test "PUT updates image when data is valid", %{conn: conn} do
     image = Repo.insert!(%Mallery.Image{})
     conn = put(conn, "/api/image/#{image.id}", image: @valid_attrs)
-    assert json_response(conn, 200)["id"] == image.id
+    assert json_response(conn, 200)["image"]["id"] == image.id
     assert Repo.get_by(Mallery.Image, @valid_attrs)
   end
 

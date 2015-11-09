@@ -4,7 +4,7 @@ defmodule Mallery.ImageApiController do
 
   def show(conn, %{"id" => id}) do
     image = Repo.get!(Mallery.Image, id)
-    render(conn, "image.json", image: image)
+    render(conn, "show.json", image: image)
   end
 
   def delete(conn, %{"id" => id}) do
@@ -21,7 +21,7 @@ defmodule Mallery.ImageApiController do
 
     case Repo.update(changeset) do
       {:ok, image} ->
-        render(conn, "image.json", image: image)
+        render(conn, "show.json", image: image)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
