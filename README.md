@@ -64,12 +64,18 @@ Sending an email with attachment via mailgun:
 
 ## TODO
 
-- Issue get requests for cloudimage.io urls right away
+- Issue get requests for cloudimage.io urls as soon as possible (reduce wait time for first user access)
 - Use channels to notify on new images and show them right away
 
 ---
 
 To start your Mallery:
+
+For development you can start a postgres instance with the included docker-compose file:
+
+    docker-compose up
+
+After that edit `config/dev.exs` and set the Mallery.Repo hostname to wherever docker is. Then go ahead and:
 
   1. Install dependencies with `mix deps.get`
   2. Create and migrate your database with `mix ecto.create && mix ecto.migrate`
