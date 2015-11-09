@@ -1,4 +1,8 @@
 defmodule Mallery.Work.RepoPersist do
+  @moduledoc """
+  Saves work items to a Repo
+  """
+
   @behaviour Mallery.Work
 
   use Honeydew

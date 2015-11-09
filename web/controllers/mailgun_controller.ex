@@ -1,4 +1,8 @@
 defmodule Mallery.MailgunController do
+  @moduledoc """
+  Accepts email post requests from Mailgun that contains image attachments.
+  This is the main way of adding images to Mallery.
+  """
   use Mallery.Web, :controller
 
   @image_content_types ["image/png", "image/jpg", "image/jpeg", "image/gif"] # TODO more?

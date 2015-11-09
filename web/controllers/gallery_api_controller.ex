@@ -1,4 +1,7 @@
 defmodule Mallery.GalleryApiController do
+  @moduledoc """
+  Provides json representations of galleries
+  """
   use Mallery.Web, :controller
   alias Mallery.Image
 

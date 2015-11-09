@@ -1,4 +1,7 @@
 defmodule Mallery.ImageController do
+  @moduledoc """
+  Provides html managment of images
+  """
   use Mallery.Web, :controller
 
   alias Mallery.Image

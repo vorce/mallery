@@ -1,4 +1,7 @@
 defmodule Mallery.GalleryController do
+  @moduledoc """
+  Provides html representations of galleries
+  """
   use Mallery.Web, :controller
   import Ecto.Query
   alias Mallery.Image

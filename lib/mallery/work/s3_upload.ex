@@ -1,4 +1,7 @@
 defmodule Mallery.Work.S3Upload do
+  @moduledoc """
+  Uploads images to s3
+  """
   @behaviour Mallery.Work
 
   use Honeydew
@@ -8,6 +11,11 @@ defmodule Mallery.Work.S3Upload do
     {:ok, state}
   end
 
+  @doc """
+  Checks if the file referred to by item exists and if so reads the data and
+  uploads it to a s3 bucket with public read access.
+  If the file does not exist {:error, msg} is returned.
+  """
   def process(%Mallery.Work.Item{} = item, {client, bucket, next}) do
     Logger.info("Request for upload of item: #{inspect(item)} to: #{bucket}")
 
